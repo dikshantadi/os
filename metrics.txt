@@ -1,0 +1,3 @@
+Average Turnaround Time: 6.0
+Average Waiting Time: 0.3
+Average Response Time: -0.3
