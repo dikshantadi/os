@@ -23,21 +23,21 @@ avg_response_times = [fcfs_metrics['Average Response Time'], sjf_metrics['Averag
 plt.figure(figsize=(10, 5))
 
 plt.subplot(1, 3, 1)
-plt.bar(algorithms, avg_turnaround_times, color=['blue', 'green', 'red'])
+plt.plot(algorithms, avg_turnaround_times, marker='o', linestyle='-', color='blue')
 plt.xlabel('Scheduling Algorithm')
 plt.ylabel('Average Turnaround Time')
 plt.title('Average Turnaround Time')
 
 # Plot Average Waiting Time
 plt.subplot(1, 3, 2)
-plt.bar(algorithms, avg_waiting_times, color=['blue', 'green', 'red'])
+plt.plot(algorithms, avg_waiting_times, marker='o', linestyle='-', color='green')
 plt.xlabel('Scheduling Algorithm')
 plt.ylabel('Average Waiting Time')
 plt.title('Average Waiting Time')
 
 # Plot Average Response Time
 plt.subplot(1, 3, 3)
-plt.bar(algorithms, avg_response_times, color=['blue', 'green', 'red'])
+plt.plot(algorithms, avg_response_times, marker='o', linestyle='-', color='red')
 plt.xlabel('Scheduling Algorithm')
 plt.ylabel('Average Response Time')
 plt.title('Average Response Time')

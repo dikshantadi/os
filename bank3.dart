@@ -82,7 +82,7 @@ class BankSimulation {
     }
   }
 
-  Future<void> start() async {
+  Future<void> start(String algorithm) async {
     Timer(Duration(seconds: 30), () {
       simulationRunning = false;
     });
@@ -94,10 +94,10 @@ class BankSimulation {
 
     await Future.delayed(Duration(seconds: 30));
 
-    _calculateAndExportMetrics();
+    _calculateAndExportMetrics(algorithm);
   }
 
-  void _calculateAndExportMetrics() {
+  void _calculateAndExportMetrics(String algorithm) {
     double totalTurnaroundTime = 0;
     double totalWaitingTime = 0;
     double totalResponseTime = 0;
@@ -109,7 +109,7 @@ class BankSimulation {
         var waitingTime =
             customer.startTime!.difference(customer.arrivalTime).inSeconds;
         var responseTime =
-            customer.arrivalTime.difference(customer.startTime!).inSeconds;
+            customer.startTime!.difference(customer.arrivalTime).inSeconds;
 
         totalTurnaroundTime += turnaroundTime;
         totalWaitingTime += waitingTime;
@@ -123,7 +123,7 @@ class BankSimulation {
     double avgWaitingTime = totalWaitingTime / servedCustomers;
     double avgResponseTime = totalResponseTime / servedCustomers;
 
-    final metricsFile = File('metrics.txt');
+    final metricsFile = File('${algorithm}_metrics.txt');
     metricsFile
         .writeAsStringSync('Average Turnaround Time: $avgTurnaroundTime\n');
     metricsFile.writeAsStringSync('Average Waiting Time: $avgWaitingTime\n',
@@ -131,7 +131,7 @@ class BankSimulation {
     metricsFile.writeAsStringSync('Average Response Time: $avgResponseTime\n',
         mode: FileMode.append);
 
-    print('Metrics exported to metrics.txt');
+    print('Metrics exported to ${algorithm}_metrics.txt');
   }
 }
 
@@ -161,5 +161,5 @@ void main() async {
   }
 
   BankSimulation bankSimulation = BankSimulation(algorithm);
-  await bankSimulation.start();
+  await bankSimulation.start(algorithm);
 }
