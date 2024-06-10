@@ -1,3 +1,3 @@
-Average Turnaround Time: 4.4
-Average Waiting Time: 0.0
-Average Response Time: 0.0
+Average Turnaround Time: 5.461538461538462
+Average Waiting Time: 0.3076923076923077
+Average Response Time: 0.3076923076923077
